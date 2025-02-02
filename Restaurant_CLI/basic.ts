@@ -36,3 +36,20 @@ let person2:Person = {
     }
 }
 
+
+let myName = 'John';
+
+const myName2 = 'Jane';
+
+type UserRole = 'guest' | 'admin' | 'member';
+
+type User = {
+    name: string;
+    role: UserRole;
+}
+
+let user:User = {
+    name: 'John',
+    role: 'admin'
+}
+
