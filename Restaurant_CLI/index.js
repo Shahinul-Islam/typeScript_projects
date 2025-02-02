@@ -29,8 +29,8 @@ function getPizzaDetail(identifier) {
 }
 // Function to add a new pizza to the menu
 function addNewPizza(pizaObj) {
-    // pizaObj.id = nextPizzaId++;
-    pizzas.push(pizaObj);
+    const newPizza = Object.assign(Object.assign({}, pizaObj), { id: nextPizzaId++ });
+    pizzas.push(newPizza);
     return pizzas;
 }
 function placeOrder(pizzaName) {
@@ -52,11 +52,11 @@ function completeOrder(id) {
     order.status = 'completed';
     return order;
 }
-const pizzaObj = { id: nextPizzaId++, name: 'Meat Lovers 4', price: 11.99 };
+const pizzaObj = { name: 'Meat Lovers 4', price: 11.99 };
 addNewPizza(pizzaObj);
 // addNewPizza();
-addNewPizza({ id: nextPizzaId++, name: 'Cheese', price: 7.99 });
-addNewPizza({ id: nextPizzaId++, name: 'Supreme', price: 12.99 });
+addNewPizza({ name: 'Cheese', price: 7.99 });
+addNewPizza({ name: 'Supreme', price: 12.99 });
 completeOrder(1);
 placeOrder('Meat Lovers');
 console.log("Pizzas: ", pizzas);

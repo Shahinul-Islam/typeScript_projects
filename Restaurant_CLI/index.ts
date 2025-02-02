@@ -9,10 +9,13 @@ type Order = {
 }
 
 type Pizza = {
-    id: number;
+    id?: number;
     name: string;
     price: number;
 }
+
+// type updatePizza = Partial<Pizza>;
+type updatePizza = Partial<Pizza>;
 
 
 let nextPizzaId:number  = 1;
@@ -50,9 +53,10 @@ function getPizzaDetail(identifier:Identifier):Pizza | string{
 
 
 // Function to add a new pizza to the menu
-function addNewPizza(pizaObj:Pizza):Pizza[]{
-    // pizaObj.id = nextPizzaId++;
-    pizzas.push(pizaObj);
+function addNewPizza(pizaObj:Omit<Pizza, 'id'>):Pizza[]{
+
+    const newPizza:Pizza = {...pizaObj, id:nextPizzaId++};
+    pizzas.push(newPizza);
     return pizzas;
 }
 
@@ -79,12 +83,12 @@ function completeOrder(id:number):string | Order{
 }
 
 
-const pizzaObj = {id:nextPizzaId++,name:'Meat Lovers 4', price:11.99};
+const pizzaObj = {name:'Meat Lovers 4', price:11.99};
 addNewPizza(pizzaObj);
 
 // addNewPizza();
-addNewPizza({id:nextPizzaId++,name:'Cheese', price:7.99});
-addNewPizza({id:nextPizzaId++,name:'Supreme', price:12.99});
+addNewPizza({name:'Cheese', price:7.99});
+addNewPizza({name:'Supreme', price:12.99});
 
 completeOrder(1);
 placeOrder('Meat Lovers');
