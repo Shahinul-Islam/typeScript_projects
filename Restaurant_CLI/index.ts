@@ -1,4 +1,4 @@
-interface IOrder {
+type Order = {
     id: number;
     name: string;
     status: string;
@@ -20,8 +20,8 @@ const pizzas: Pizza[] = [
 
 
 let cashInDrawer:number = 100;
-const orderQueue: IOrder[] = [];
 let orderId:number = 1;
+const orderQueue: Order[] = [];
 
 
 // Function to add a new pizza to the menu
@@ -30,20 +30,20 @@ function addNewPizza(pizaObj:Pizza):Pizza[]{
     return pizzas;
 }
 
-function placeOrder(pizzaName:string):IOrder | string{
+function placeOrder(pizzaName:string):Order | string{
     const pizza = pizzas.find(p=>p.name.toLowerCase() === pizzaName.toLowerCase());
     if(!pizza){
         return 'Pizza not found';
     }
     cashInDrawer = cashInDrawer + pizza.price;
     orderId++;
-    const newOrder = {id:orderId,name:pizza.name, status:'ordered'};
+    const newOrder:Order = {id:orderId,name:pizza.name, status:'ordered'};
     orderQueue.push(newOrder);
     
     return newOrder;
 }
 
-function completeOrder(id:number):string | IOrder{
+function completeOrder(id:number):string | Order{
     const order = orderQueue.find(o=>o.id === id);
     if(!order){
         return 'Order not found';
@@ -60,6 +60,6 @@ addNewPizza({name:'Supreme', price:12.99});
 placeOrder('Meat Lovers');
 completeOrder(1);
 
-console.log("Pizzas: ", pizzas);
+console.log("Pizzas: ", pizzas)
 console.log("Cash in drawer: ", cashInDrawer);
 console.log("Order queue: ", orderQueue);

@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "tsc": "^2.0.4",
+    "typescript": "^5.7.3"
+  },
+  "name": "projects",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/node": "^22.13.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/index.js",
+    "dev": "tsc -w",
+    "tsc": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
