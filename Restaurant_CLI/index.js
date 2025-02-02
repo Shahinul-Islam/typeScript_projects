@@ -1,14 +1,15 @@
 "use strict";
-const pizzas = [
-    { id: 1, name: 'Margherita', price: 8.99 },
-    { id: 2, name: 'Pepperoni', price: 9.99 },
-    { id: 3, name: 'BBQ Chicken', price: 10.99 },
-    { id: 4, name: 'Hawaiian', price: 9.49 },
-    { id: 5, name: 'Veggie', price: 8.49 }
-];
+let nextPizzaId = 1;
 let cashInDrawer = 100;
 let orderId = 1;
 const orderQueue = [];
+const pizzas = [
+    { id: nextPizzaId++, name: 'Margherita', price: 8.99 },
+    { id: nextPizzaId++, name: 'Pepperoni', price: 9.99 },
+    { id: nextPizzaId++, name: 'BBQ Chicken', price: 10.99 },
+    { id: nextPizzaId++, name: 'Hawaiian', price: 9.49 },
+    { id: nextPizzaId++, name: 'Veggie', price: 8.49 }
+];
 //Function to get Pizza details
 function getPizzaDetail(identifier) {
     if (typeof identifier === 'number') {
@@ -28,6 +29,7 @@ function getPizzaDetail(identifier) {
 }
 // Function to add a new pizza to the menu
 function addNewPizza(pizaObj) {
+    // pizaObj.id = nextPizzaId++;
     pizzas.push(pizaObj);
     return pizzas;
 }
@@ -50,11 +52,11 @@ function completeOrder(id) {
     order.status = 'completed';
     return order;
 }
-const pizzaObj = { id: 6, name: 'Meat Lovers 2', price: 11.99 };
+const pizzaObj = { id: nextPizzaId++, name: 'Meat Lovers 4', price: 11.99 };
 addNewPizza(pizzaObj);
 // addNewPizza();
-addNewPizza({ id: 7, name: 'Cheese', price: 7.99 });
-addNewPizza({ id: 8, name: 'Supreme', price: 12.99 });
+addNewPizza({ id: nextPizzaId++, name: 'Cheese', price: 7.99 });
+addNewPizza({ id: nextPizzaId++, name: 'Supreme', price: 12.99 });
 completeOrder(1);
 placeOrder('Meat Lovers');
 console.log("Pizzas: ", pizzas);
